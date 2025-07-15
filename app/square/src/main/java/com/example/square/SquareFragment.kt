@@ -5,28 +5,35 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.lifecycle.Lifecycle
+import androidx.lifecycle.ViewModelProvider
+import androidx.lifecycle.lifecycleScope
+import androidx.lifecycle.repeatOnLifecycle
+import com.example.lib.base.BaseFragment
+import com.example.square.bean.ChildTabBean
+import com.example.square.bean.TabListBean
+import com.example.square.databinding.FragmentSquareBinding
+import com.example.square.viewmodule.JumpViewModle
+import com.example.square.viewmodule.SquareViewModule
+import androidx.recyclerview.widget.LinearLayoutManager
+import com.example.square.adpter.reAdpter
+import com.example.square.adpter.vpAdpter
+import kotlinx.coroutines.flow.collect
+import kotlinx.coroutines.launch
 
-// TODO: Rename parameter arguments, choose names that match
-// the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-private const val ARG_PARAM1 = "param1"
-private const val ARG_PARAM2 = "param2"
 
-/**
- * A simple [Fragment] subclass.
- * Use the [SquareFragment.newInstance] factory method to
- * create an instance of this fragment.
- */
-class  SquareFragment : Fragment() {
-    // TODO: Rename and change types of parameters
-    private var param1: String? = null
-    private var param2: String? = null
+class SquareFragment : BaseFragment<FragmentSquareBinding>() {
+    private lateinit var squareViewModule :SquareViewModule
+    private lateinit var jumpViewModle: JumpViewModle
+    private var tabList :TabListBean? = null
+    private  var childList = mutableListOf<ChildTabBean>()
+    private val mAdapter : reAdpter by lazy {
+        tabList?.let { reAdpter(it,childList) }!!
+    }
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        arguments?.let {
-            param1 = it.getString(ARG_PARAM1)
-            param2 = it.getString(ARG_PARAM2)
-        }
+
+    override fun getBinding(): FragmentSquareBinding {
+        return FragmentSquareBinding.inflate(layoutInflater)
     }
 
     override fun onCreateView(
@@ -37,23 +44,40 @@ class  SquareFragment : Fragment() {
         return inflater.inflate(R.layout.fragment_square, container, false)
     }
 
-    companion object {
-        /**
-         * Use this factory method to create a new instance of
-         * this fragment using the provided parameters.
-         *
-         * @param param1 Parameter 1.
-         * @param param2 Parameter 2.
-         * @return A new instance of fragment SquareFragment.
-         */
-        // TODO: Rename and change types and number of parameters
-        @JvmStatic
-        fun newInstance(param1: String, param2: String) =
-            SquareFragment().apply {
-                arguments = Bundle().apply {
-                    putString(ARG_PARAM1, param1)
-                    putString(ARG_PARAM2, param2)
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        squareViewModule=ViewModelProvider(requireActivity())[SquareViewModule::class.java]
+        jumpViewModle=ViewModelProvider(requireActivity())[JumpViewModle::class.java]
+        mBinding?.rvCom?.layoutManager=LinearLayoutManager(activity)
+    }
+    fun getChildData(){
+        viewLifecycleOwner.lifecycleScope.launch {
+            jumpViewModle.getChildData()
+            jumpViewModle.childTabStateFlow.collect{
+                it?.let {
+                    childList.addAll(it)
+                    getTabData()
                 }
             }
+        }
+
+    }
+    fun getTabData(){
+        lifecycleScope.launch {
+            squareViewModule.getTabData()
+            repeatOnLifecycle(Lifecycle.State.STARTED){
+                squareViewModule.tabStateFlow.collect{
+                   if (it!=null){
+                       mBinding?.rvCom?.apply {
+                           tabList = it
+                           adapter = mAdapter
+                       }
+                   }
+            }
+
+            }
+        }
+
+
     }
 }

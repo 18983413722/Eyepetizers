@@ -1,4 +1,4 @@
-package com.example.module.community.bean
+package com.example.square.bean
 
 /**
  * author : zeq

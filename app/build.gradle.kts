@@ -44,8 +44,16 @@ android {
 
 
 dependencies {
-
+    implementation (libs.androidx.paging.runtime)
+    implementation (libs.retrofit)
+    implementation (libs.converter.gson)
+    implementation (libs.glide.v4120)
+    implementation (libs.adapter.rxjava3)
+    implementation (libs.rxjava)
+    implementation (libs.rxandroid)
+    implementation(project(":lib_net"))
     kapt("cn.therouter:apt:1.2.1")
+    implementation("com.android.support:recyclerview-v7:28.0.0")
     implementation("cn.therouter:router:1.2.1")
     implementation(project(":app:home"))
     implementation(project(":app:found"))
