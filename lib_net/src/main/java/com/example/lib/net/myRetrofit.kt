@@ -1,9 +1,4 @@
-/**
- *description:能看小说的app
- * author 王以飞
- * email 1206897770@qq.com
- * date 2025-2-18
- */
+package com.example.lib.net
 import retrofit2.Retrofit
 import retrofit2.adapter.rxjava3.RxJava3CallAdapterFactory
 import retrofit2.converter.gson.GsonConverterFactory

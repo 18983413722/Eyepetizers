@@ -14,6 +14,7 @@
             <option value="$PROJECT_DIR$/app/home" />
             <option value="$PROJECT_DIR$/app/popular" />
             <option value="$PROJECT_DIR$/app/square" />
+            <option value="$PROJECT_DIR$/lib-network" />
           </set>
         </option>
         <option name="resolveExternalAnnotations" value="false" />
