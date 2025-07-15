@@ -52,6 +52,13 @@ android {
 }
 
 dependencies {
+
+    implementation("com.google.code.gson:gson:2.10.1") // 明确添加Gson版本
+
+    // Gson Extras for RuntimeTypeAdapterFactory
+    implementation("org.danilopianini:gson-extras:0.2.2")
+
+    implementation(project(":lib-network"))
     kapt("cn.therouter:apt:1.2.1")
     implementation("cn.therouter:router:1.2.1")
     implementation(libs.androidx.core.ktx)
@@ -69,4 +76,15 @@ dependencies {
     androidTestImplementation(libs.androidx.ui.test.junit4)
     debugImplementation(libs.androidx.ui.tooling)
     debugImplementation(libs.androidx.ui.test.manifest)
+
+    implementation("com.squareup.retrofit2:retrofit:2.9.0")
+    implementation("com.squareup.retrofit2:converter-gson:2.9.0")
+    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.7.3")
+    implementation("androidx.paging:paging-runtime:3.2.1")//paging3
+    implementation("com.squareup.retrofit2:adapter-rxjava3:2.9.0")
+    implementation("io.reactivex.rxjava3:rxjava:3.1.8")
+    implementation("io.reactivex.rxjava3:rxandroid:3.0.2")
+
+    implementation("com.github.bumptech.glide:glide:4.16.0")
+    implementation("com.github.bumptech.glide:compose:1.0.0-beta01")
 }

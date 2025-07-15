@@ -1,22 +1,17 @@
-
 plugins {
-    id("kotlin-kapt")
-    alias(libs.plugins.android.application)
+    alias(libs.plugins.android.library)
     alias(libs.plugins.kotlin.android)
 }
 
 android {
-    namespace = "com.example.eyepetizers"
+    namespace = "com.example.lib_network"
     compileSdk = 34
 
     defaultConfig {
-        applicationId = "com.example.eyepetizers"
         minSdk = 24
-        targetSdk = 34
-        versionCode = 1
-        versionName = "1.0"
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
+        consumerProguardFiles("consumer-rules.pro")
     }
 
     buildTypes {
@@ -28,11 +23,6 @@ android {
             )
         }
     }
-
-    buildFeatures {
-        viewBinding = true
-    }
-
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_1_8
         targetCompatibility = JavaVersion.VERSION_1_8
@@ -42,20 +32,19 @@ android {
     }
 }
 
-
 dependencies {
-
-    kapt("cn.therouter:apt:1.2.1")
-    implementation("cn.therouter:router:1.2.1")
-    implementation(project(":app:home"))
-    implementation(project(":app:found"))
-    implementation(project(":app:popular"))
-    implementation(project(":app:square"))
+    implementation("com.squareup.retrofit2:retrofit:2.9.0")
+// Gson 转换器
+    implementation("com.squareup.retrofit2:converter-gson:2.9.0")
+// RxJava3 适配器
+    implementation("com.squareup.retrofit2:adapter-rxjava3:2.9.0")
+// RxJava3
+    implementation("io.reactivex.rxjava3:rxjava:3.1.6")
+// RxAndroid（用于Android主线程调度）
+    implementation("io.reactivex.rxjava3:rxandroid:3.0.2")
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.appcompat)
     implementation(libs.material)
-    implementation(libs.androidx.activity)
-    implementation(libs.androidx.constraintlayout)
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
