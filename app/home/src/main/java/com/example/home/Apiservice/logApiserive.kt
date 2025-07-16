@@ -1,7 +1,6 @@
-package com.example.home
+package com.example.home.Apiservice
 
 
-import com.example.home.Apiservice.ApiResponse
 import retrofit2.http.GET
 import retrofit2.http.Query
 

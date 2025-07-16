@@ -10,6 +10,7 @@ import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.home.adapter.homelogadapter
 import com.example.home.databinding.FragmentHomeLogBinding // 自动生成的绑定类
+import com.example.home.homeviewmodle.logViewModel
 import kotlinx.coroutines.launch
 
 class HomeLogFragment : Fragment() {

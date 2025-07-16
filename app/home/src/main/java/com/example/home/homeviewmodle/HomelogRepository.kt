@@ -1,4 +1,4 @@
-package com.example.home
+package com.example.home.homeviewmodle
 
 import com.example.home.Apiservice.Daily
 import androidx.paging.Pager
@@ -11,7 +11,7 @@ object homelogRepository {
 
     private const val PAGE_SIZE = 10
 
-    private val logApiservice = RetrofitClient.getService(logApiservice::class.java)
+    private val logApiservice = RetrofitClient.getService(com.example.home.Apiservice.logApiservice::class.java)
 
     fun getPagingData(): Flow<PagingData<Daily>> {
         return Pager(

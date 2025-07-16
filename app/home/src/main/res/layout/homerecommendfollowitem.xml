@@ -2,13 +2,11 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:background="#FFFFFF">
+    android:layout_height="wrap_content">
 
-    <!-- 视频封面 + 时长叠加 -->
     <FrameLayout
         android:layout_width="match_parent"
-        android:layout_height="240dp"> <!-- 调高封面图占比 -->
+        android:layout_height="400dp"> <!-- 调高封面图占比 -->
 
         <ImageView
             android:id="@+id/videocover"
@@ -22,12 +20,12 @@
             android:id="@+id/video_duration"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="bottom|right"
             android:layout_margin="10dp"
+            android:layout_gravity="bottom|right"
             android:background="#00000000"
             android:padding="9dp"
             android:textColor="#FFFFFF"
-            android:textSize="14sp" />
+            android:textSize="14sp"/>
     </FrameLayout>
 
     <LinearLayout
@@ -86,4 +84,5 @@
             </LinearLayout>
         </LinearLayout>
     </LinearLayout>
+
 </LinearLayout>

@@ -1,9 +1,10 @@
-package com.example.home
+package com.example.home.homeviewmodle
 
 import com.example.home.Apiservice.Daily
 import android.util.Log
 import androidx.paging.PagingSource
 import androidx.paging.PagingState
+import com.example.home.Apiservice.logApiservice
 
 class homelogPagingSource(private val logApiservice: logApiservice) :
     PagingSource<Int, Daily>() {
@@ -26,6 +27,5 @@ class homelogPagingSource(private val logApiservice: logApiservice) :
             Log.e("Paging", "Load error", e)
             LoadResult.Error(e)
         }
-
     }
 }
