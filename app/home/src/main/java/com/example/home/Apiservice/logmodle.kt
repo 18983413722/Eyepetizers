@@ -88,7 +88,7 @@ data class Author(
     val link: String,
     val name: String,
     val recSort: Int,
-    val shield: Shield,
+    val shield: rShield,
     val videoNum: Int
 )
 

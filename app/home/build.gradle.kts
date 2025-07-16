@@ -58,6 +58,8 @@ dependencies {
     implementation("org.danilopianini:gson-extras:0.2.2")
 
     implementation(project(":lib-network"))
+    implementation(libs.androidx.viewpager2)
+
     kapt("cn.therouter:apt:1.2.1")
     implementation("cn.therouter:router:1.2.1")
     implementation(libs.androidx.core.ktx)

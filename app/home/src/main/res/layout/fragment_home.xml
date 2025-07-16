@@ -6,24 +6,16 @@
     tools:context=".HomeFragment"
     android:orientation="vertical">
 
-    <Toolbar
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content">
+    <com.google.android.material.tabs.TabLayout
+        android:id="@+id/tabLayout"
+        android:layout_width="match_parent"
+        android:layout_height="40dp" />
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="40dp"
-        android:layout_gravity="center"
-        android:text="oneFragment"
-        android:textSize="20sp" />
-    </Toolbar>
-
-    <FrameLayout
-        android:id="@+id/homeFrameLayout"
+    <androidx.viewpager2.widget.ViewPager2
+        android:id="@+id/view_pager"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="1">
+        android:layout_weight="1" />
 
-    </FrameLayout>
 
 </LinearLayout>

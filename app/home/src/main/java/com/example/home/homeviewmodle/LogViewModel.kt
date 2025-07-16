@@ -1,4 +1,4 @@
-package com.example.home
+package com.example.home.homeviewmodle
 
 import com.example.home.Apiservice.Daily
 import androidx.lifecycle.ViewModel

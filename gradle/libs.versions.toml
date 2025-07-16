@@ -24,6 +24,7 @@ rxjava = "3.0.13"
 viewbinding = "1.7.0"
 viewpager2 = "1.1.0"
 adsMobileSdk = "0.17.0-alpha02"
+cardview = "1.0.0"
 
 [libraries]
 adapter-rxjava3 = { module = "com.squareup.retrofit2:adapter-rxjava3", version.ref = "converterGson" }
@@ -60,6 +61,7 @@ router = { module = "cn.therouter:router", version.ref = "apt" }
 rxandroid = { module = "io.reactivex.rxjava3:rxandroid", version.ref = "rxandroid" }
 rxjava = { module = "io.reactivex.rxjava3:rxjava", version.ref = "rxjava" }
 ads-mobile-sdk = { group = "com.google.android.libraries.ads.mobile.sdk", name = "ads-mobile-sdk", version.ref = "adsMobileSdk" }
+androidx-cardview = { group = "androidx.cardview", name = "cardview", version.ref = "cardview" }
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }

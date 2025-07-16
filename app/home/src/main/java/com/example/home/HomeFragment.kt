@@ -8,8 +8,9 @@ import android.view.LayoutInflater
 import android.view.MotionEvent
 import android.view.View
 import android.view.ViewGroup
+import com.example.home.adapter.fragmentadapter
 import com.example.home.databinding.FragmentHomeBinding
-import com.example.home.HomecreateFragment
+import com.google.android.material.tabs.TabLayoutMediator
 import kotlin.math.abs
 
 private const val ARG_PARAM1 = "param1"
@@ -19,11 +20,8 @@ class HomeFragment : Fragment() {
 
     private var _binding: FragmentHomeBinding? = null
     private val binding get() = _binding!!
-
     private var param1: String? = null
     private var param2: String? = null
-    private var currentIndex = 0
-    private val fragmentList : List<Fragment> = listOf( HomecreateFragment(), HomerecommendedFragment(),HomeLogFragment())
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         arguments?.let {
@@ -43,7 +41,36 @@ class HomeFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        startFragment(fragmentList[0])
+        initbp2()
+        }
+
+    fun initbp2(){
+        binding.viewPager.adapter= fragmentadapter(requireActivity())
+        TabLayoutMediator(binding.tabLayout, binding.viewPager) { tab, position ->
+            tab.text = when(position) {
+                0 -> "推荐"
+                else -> "日报"
+            }
+        }.attach()
+    }
+
+    companion object {
+        @JvmStatic
+        fun newInstance(param1: String, param2: String) =
+            HomeFragment().apply {
+                arguments = Bundle().apply {
+                    putString(ARG_PARAM1, param1)
+                    putString(ARG_PARAM2, param2)
+                }
+            }
+    }
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
+    }
+}
+
+/*startFragment(fragmentList[0])
 
         val gestureDetector = GestureDetector(context, object : GestureDetector.SimpleOnGestureListener(){
 
@@ -77,10 +104,7 @@ class HomeFragment : Fragment() {
                 gestureDetector.onTouchEvent(event)
             true
             }
-        }
-
-
-    fun replaceFragment(x: Boolean) {
+            fun replaceFragment(x: Boolean) {
         if (x) {
             if (currentIndex < fragmentList.size - 1) {
                 currentIndex++
@@ -106,19 +130,4 @@ class HomeFragment : Fragment() {
             .replace(R.id.homeFrameLayout, fragment)
             .commit()
     }
-
-    companion object {
-        @JvmStatic
-        fun newInstance(param1: String, param2: String) =
-            HomeFragment().apply {
-                arguments = Bundle().apply {
-                    putString(ARG_PARAM1, param1)
-                    putString(ARG_PARAM2, param2)
-                }
-            }
-    }
-    override fun onDestroyView() {
-        super.onDestroyView()
-        _binding = null
-    }
-}
+ */
