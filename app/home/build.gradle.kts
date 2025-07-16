@@ -38,7 +38,6 @@ android {
         jvmTarget = "1.8"
     }
     buildFeatures {
-        compose = true
         viewBinding = true
     }
     composeOptions {
@@ -60,7 +59,6 @@ dependencies {
 
     implementation(project(":lib-network"))
     implementation(libs.androidx.viewpager2)
-    implementation(libs.google.material)
 
     kapt("cn.therouter:apt:1.2.1")
     implementation("cn.therouter:router:1.2.1")
