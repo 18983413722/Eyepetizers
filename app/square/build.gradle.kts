@@ -52,6 +52,7 @@ android {
 }
 
 dependencies {
+    implementation(libs.androidx.cardview)
     kapt("cn.therouter:apt:1.2.1")
     implementation("cn.therouter:router:1.2.1")
     implementation(libs.androidx.core.ktx)
